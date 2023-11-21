@@ -25,6 +25,7 @@ void *increase_counter_thread_1(void *arg)
 {
   (void)arg;
   set_led_color(0, 0, 0);
+  puts("THREAD 1");
   int i;
   for (i = 0; i < MAX_VALUE; i++)
   {
@@ -37,6 +38,7 @@ void *increase_counter_thread_2(void *arg)
 {
   (void)arg;
   set_led_color(0, 0, 0);
+  puts("THREAD 2");
   int i;
   for (i = 0; i < MAX_VALUE; i++)
   {
@@ -49,15 +51,19 @@ void *increase_counter_thread_2(void *arg)
 void *main_thread(void *arg)
 {
   (void)arg;
+  puts("MAIN THREAD");
   set_led_color(0, 0, 1);
   thread_sleep();
+  puts("MAIN THREAD");
   if (counter == MAX_VALUE * 2)
   {
     set_led_color(0, 1, 0);
+    puts("CORRECT");
   }
   else
   {
     set_led_color(1, 0, 0);
+    puts("INCORRECT");
   }
   return NULL;
 }

@@ -33,15 +33,15 @@ static void *led_thread(void *arg)
 
   while (1)
   {
-    while (1)
-    {
-      set_led_color(1, 0, 0);
-      xtimer_usleep(2000 * US_PER_MS);
-      set_led_color(0, 1, 0);
-      xtimer_usleep(2000 * US_PER_MS);
-      set_led_color(0, 0, 1);
-      xtimer_usleep(2000 * US_PER_MS);
-    }
+    puts("LED THREAD");
+    set_led_color(1, 0, 0);
+    xtimer_usleep(2000 * US_PER_MS);
+    puts("LED THREAD");
+    set_led_color(0, 1, 0);
+    xtimer_usleep(2000 * US_PER_MS);
+    puts("LED THREAD");
+    set_led_color(0, 0, 1);
+    xtimer_usleep(2000 * US_PER_MS);
   }
 
   return NULL;
@@ -66,8 +66,10 @@ int main(void)
     puts("MAIN THREAD");
     set_led_color_main_thread(0, 0, 1);
     xtimer_usleep(1000 * US_PER_MS);
+    puts("MAIN THREAD");
     set_led_color_main_thread(1, 0, 0);
     xtimer_usleep(1000 * US_PER_MS);
+    puts("MAIN THREAD");
     set_led_color_main_thread(0, 1, 0);
     xtimer_usleep(1000 * US_PER_MS);
   }
